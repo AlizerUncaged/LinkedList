@@ -8,34 +8,38 @@ public class LinkedList {
 
     private long size = 0;
 
-    public void setHead(Node head)
-    {
+    public void setHead(Node head) {
         this.head = head;
     }
 
 
-    public Node get(long index)
-    {
+    public Node get(long index) {
         var currentNode = head;
 
-        for(int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++)
             currentNode = currentNode.getNext();
 
         return currentNode;
     }
 
-    public void addToFront(Node newNode)
-    {
+//    public void addToTail(Node newNode)
+//    {
+//
+////                var currentNode = head;
+////                for(int i = 0; i < (size - 1); i++)
+////                    currentNode = currentNode.getNext();
+////
+////                currentNode.setNext(newNode);
+////
+//    }
+//
+    public void addToFront(Node newNode) {
         if (size == 0) // empty list
             setHead(newNode);
-        else
-        {
-            var currentNode = head;
-            for(int i = 0; i < (size - 1); i++)
-            {
-                currentNode = currentNode.getNext();
-            }
-            currentNode.setNext(newNode);
+        else {
+            var originalHead = head;
+            head = newNode;
+            newNode.setNext(originalHead);
         }
 
         size++;
